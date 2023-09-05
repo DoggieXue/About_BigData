@@ -1,0 +1,12 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /uemp
+
+spring:
+  kafka:
+    listener:
+      missing-topics-fatal: false # 启动Kafka时找不到对应的Topic不报错
+    producer:
+      bootstrap-servers: localhost:9092
+

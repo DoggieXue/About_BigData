@@ -1,0 +1,4 @@
+Hello Apache Flink
+Hello Java
+This is My First Flink Application
+董菠萝 是个 小兔子

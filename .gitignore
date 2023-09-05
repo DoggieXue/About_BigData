@@ -1,0 +1,4 @@
+/.idea/
+/common-lib/target/
+/flink-app/target/
+/kafka-app/target/
