@@ -2,3 +2,5 @@
 /common-lib/target/
 /flink-app/target/
 /kafka-app/target/
+/olap-app/target/
+/About_BigData.iml
