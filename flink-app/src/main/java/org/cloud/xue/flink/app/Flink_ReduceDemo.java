@@ -2,6 +2,7 @@ package org.cloud.xue.flink.app;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.functions.ReduceFunction;
+import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
@@ -32,7 +33,8 @@ public class Flink_ReduceDemo {
             public Tuple2<String, Long> map(Event event) throws Exception {
                 return new Tuple2<>(event.user, 1L);
             }
-        });
+        }).returns(Types.TUPLE(Types.STRING, Types.LONG));//避免泛型擦除导致Flink无法推断元组类型
+
         //按照用户ID分组，即使用元组的第一个元素分组
         KeyedStream<Tuple2<String, Long>, String> keyedStream = mapSource.keyBy(new KeySelector<Tuple2<String, Long>, String>() {
 
