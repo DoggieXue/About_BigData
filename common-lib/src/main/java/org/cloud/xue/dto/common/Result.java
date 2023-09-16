@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Result<T> implements IResult {
 
-    private String code;
+    private long code;
     private String msg;
     private T data;
 
@@ -32,23 +32,31 @@ public class Result<T> implements IResult {
         return new Result<>(ResultEnum.SUCCESS.getCode(), message, data);
     }
 
-    public static Result<?> failed() {
-        return new Result<>(ResultEnum.COMMON_FAILED.getCode(), ResultEnum.COMMON_FAILED.getMsg(), null);
+    public static <T> Result<T> failed(IResult iResult) {
+        return new Result<T>(iResult.getCode(), iResult.getMsg(), null);
     }
 
-    public static Result<?> failed(String message) {
-        return new Result<>(ResultEnum.COMMON_FAILED.getCode(), message, null);
+    public static <T> Result<T> failed(IResult errResult, String msg) {
+        return new Result<>(errResult.getCode(), msg, null);
     }
 
-    public static Result<?> failed(IResult errResult) {
-        return new Result<>(errResult.getCode(), errResult.getMsg(), null);
+    public static <T> Result<T> failed(String msg) {
+        return new Result<>(ResultEnum.FAILED.getCode(), msg, null);
     }
 
-    public static <T> Result<T> instance(String code, String message, T data) {
-        Result<T> result = new Result<>();
-        result.setCode(code);
-        result.setMsg(message);
-        result.setData(data);
-        return result;
+    public static <T> Result<T> failed() {
+        return failed(ResultEnum.FAILED);
+    }
+
+    public static <T> Result<T> validateFailed() {
+        return failed(ResultEnum.VALIDATE_FAILED);
+    }
+
+    public static <T> Result<T> unauthorized(T data) {
+        return new Result<T>(ResultEnum.UNAUTHORIZED.getCode(),ResultEnum.UNAUTHORIZED.getMsg(), data);
+    }
+
+    public static <T> Result<T> forbidden(T data) {
+        return new Result<T>(ResultEnum.FORBIDDEN.getCode(),ResultEnum.FORBIDDEN.getMsg(), data);
     }
 }

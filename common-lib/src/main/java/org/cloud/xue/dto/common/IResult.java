@@ -8,6 +8,6 @@ package org.cloud.xue.dto.common;
  * @Version 1.0
  **/
 public interface IResult {
-    String getCode();
+    long getCode();
     String getMsg();
 }

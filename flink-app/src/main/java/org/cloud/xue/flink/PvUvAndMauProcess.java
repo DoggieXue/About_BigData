@@ -19,7 +19,6 @@ import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 import org.cloud.xue.dto.PvAndUvDto;
 import org.cloud.xue.utils.JsonHelper;
-import org.springframework.util.StringUtils;
 
 import java.util.Properties;
 

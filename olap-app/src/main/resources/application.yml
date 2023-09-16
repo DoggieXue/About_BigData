@@ -1,5 +1,9 @@
 server:
   port: 8080 # 启动端口
+  reactive:
+    session:
+      cookie:
+
 spring:
   datasource:
     db1: # 数据源1
@@ -12,3 +16,18 @@ spring:
       username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
+
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /**/*.html
+      - /api/pvuv/getList
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.map
+      - /favicon.ico
+      - /actuator/**
+      - /druid/**
+      - /api/auth/get_token
+      - /files/**
