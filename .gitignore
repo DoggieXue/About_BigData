@@ -3,4 +3,11 @@
 /flink-app/target/
 /kafka-app/target/
 /olap-app/target/
+/common-security/target/
+
 /About_BigData.iml
+/common-lib/common-lib.iml
+/common-security/common-security.iml
+/flink-app/flink-app.iml
+/kafka-app/kafka-app.iml
+/olap-app/olap-app.iml
